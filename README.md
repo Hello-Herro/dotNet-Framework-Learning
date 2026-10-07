@@ -80,16 +80,16 @@ The main goals of this learning journey are to:
 - [x] DI Container
 - [x] Service Registration
 - [x] Constructor Injection
-- [ ] Scoped
-- [ ] Transient
-- [ ] Singleton
-- [ ] Service Lifetime comparison
+- [x] Scoped
+- [x] Transient
+- [x] Singleton
+- [x] Service Lifetime comparison
 
 ### 5. Interfaces & Abstraction
 
-- [ ] Interface
+- [x] Interface
 - [ ] Abstraction
-- [ ] Interface-based Dependency Injection
+- [x] Interface-based Dependency Injection
 - [ ] Service contracts
 - [ ] Loose coupling
 
@@ -191,21 +191,31 @@ dotNet-Framework-Learning/
 ├── .gitignore
 │
 ├── BelajarService/
+│   ├── Interfaces/
+│   │   └── IPaymentService.cs
+│   │
 │   ├── Services/
 │   │   ├── DiscountService.cs
 │   │   ├── TaxService.cs
-│   │   └── OrderService.cs
+│   │   ├── OrderService.cs
+│   │   ├── ProductService.cs
+│   │   ├── CashPaymentService.cs
+│   │   └── TransferPaymentService.cs
 │   │
 │   ├── Program.cs
 │   └── BelajarService.csproj
 │
 └── TokoSaya/
+    ├── Interfaces/
+    │   └── IProductService.cs
+    │
     ├── Pages/
     │   ├── Index.cshtml
     │   └── Index.cshtml.cs
     │
     ├── Services/
-    │   └── ProductService.cs
+    │   ├── ProductService.cs
+    │   └── ProductCheckerService.cs
     │
     ├── Program.cs
     └── TokoSaya.csproj

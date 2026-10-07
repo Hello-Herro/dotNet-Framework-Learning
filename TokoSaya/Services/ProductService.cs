@@ -1,3 +1,5 @@
+using TokoSaya.Interfaces;
+
 namespace TokoSaya.Services;
 
 // ============================================================
@@ -7,16 +9,33 @@ namespace TokoSaya.Services;
 // menyediakan informasi Product.
 // ============================================================
 
-public class ProductService
+public class ProductService : IProductService
 {
+    // Field untuk menyimpan ID Object
+    private readonly Guid _id;
+
+    // Constructor
+    public ProductService()
+    {
+        _id = Guid.NewGuid();
+    }
+
     // ========================================================
     // METHOD
+    // Memenuhi contract IProductService
     // ========================================================
-    // Method ini mengembalikan nama product.
-    // ========================================================
-
     public string GetProductName()
     {
         return "Laptop ASUS";
+    }
+
+    // ========================================================
+    // METHOD
+    // Memenuhi contract IProductService
+    // ========================================================
+
+    public Guid GetId()
+    {
+        return _id;
     }
 }

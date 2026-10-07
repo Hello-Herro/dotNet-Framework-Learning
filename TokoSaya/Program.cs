@@ -1,4 +1,5 @@
 using TokoSaya.Services;
+using TokoSaya.Interfaces;
 
 // ============================================================
 // CREATE BUILDER
@@ -23,7 +24,11 @@ var builder = WebApplication.CreateBuilder(args); // var builder adalah default 
 // Untuk sekarang cukup pahami bahwa ProductService
 // sedang DIDAFTARKAN ke DI Container.
 // ============================================================
-builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();  // registrasi ProductService melalui Interface
+// builder.Services.AddTransient<ProductService>();
+// builder.Services.AddSingleton<ProductService>();
+
+builder.Services.AddScoped<ProductCheckerService>();
 
 // ============================================================
 // RAZOR PAGES REGISTRATION

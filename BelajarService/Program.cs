@@ -9,7 +9,19 @@
 // - TaxService
 // - OrderService
 // ============================================================
+using BelajarService.Interfaces;
 using BelajarService.Services;
+
+// ============================================================
+// OBJECT
+//
+// Membuat object ProductService.
+// Membuat object cashPayment.
+// Membuat object transferPayment.
+// ============================================================
+ProductService productService = new ProductService();
+IPaymentService cashPayment = new CashPaymentService();
+IPaymentService transferPayment = new TransferPaymentService();
 
 // ============================================================
 // MEMBUAT OBJECT DISCOUNT SERVICE
@@ -42,6 +54,24 @@ TaxService taxService = new TaxService(); // huruf kapital untuk mengikuti konve
 // kemudian memberikannya kepada OrderService.
 // ============================================================
 OrderService orderService = new OrderService(discountService, taxService);
+
+// ============================================================
+// METHOD CALL
+// ============================================================
+Console.WriteLine("=== Interface + Service ===");
+string productName = productService.GetProductName();
+
+Console.WriteLine(productName);
+
+// ============================================================
+// METHOD CALL Contract yang sama
+// ============================================================
+decimal cashResult = cashPayment.CalculatePayment(100000);
+
+decimal transferResult = transferPayment.CalculatePayment(100000);
+
+Console.WriteLine($"Cash        : {cashResult}");
+Console.WriteLine($"Transfer    : {transferResult}\n");
 
 // ============================================================
 // DATA ORDER

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TokoSaya.Services; // agar C# tau kita ingin menggunakan ProductService
+using TokoSaya.Interfaces;
 
 namespace TokoSaya.Pages;
 
@@ -31,7 +32,9 @@ public class IndexModel : PageModel
     // Karena IndexModel membutuhkan ProductService
     // untuk mendapatkan informasi Product.
     // ========================================================
-    private readonly ProductService _productService;
+    private readonly IProductService _productService;
+
+    private readonly ProductCheckerService _productCheckerService;
 
     // ========================================================
     // CONSTRUCTOR
@@ -49,10 +52,15 @@ public class IndexModel : PageModel
     // Proses memberikan dependency melalui constructor
     // disebut CONSTRUCTOR INJECTION.
     // ========================================================
-    public IndexModel(ILogger<IndexModel> logger, ProductService productService) // ProductService productService Ini adalah dependency yang diterima constructor.
+    public IndexModel(
+        ILogger<IndexModel> logger,
+        IProductService productService,
+        ProductCheckerService productCheckerService
+    ) // ProductService productService Ini adalah dependency yang diterima constructor.
     {
         _logger = logger; // Menyimpan ILogger ke field _logger.
         _productService = productService; // Menyimpan ProductService ke field _productService.
+        _productCheckerService = productCheckerService;
     }
 
     // ========================================================
@@ -62,10 +70,25 @@ public class IndexModel : PageModel
     // ditampilkan pada halaman.
     // ========================================================
 
-    public string ProductName { get; private set; } = "";
+    // public string ProductName { get; private set; } = "";
+
+    // ========================================================
+    // PROPERTY
+    //
+    // Property ini akan menyimpan ID dari ProductService
+    // yang nantinya ditampilkan oleh Index.cshtml
+    // ========================================================
+    public string ProductId { get; private set; } = "";
+    public string ProductCheckerId { get; private set; } = "";
 
     public void OnGet()
     {
+        // Mengambil ID langsung dari ProductService
+        ProductId = _productService.GetId().ToString();
+
+        // Mengambil ID ProductService melalui ProductCheckerService
+        ProductCheckerId = _productCheckerService.GetProductServiceId().ToString();
+
         // Memanggil method GetProductName()
         // dari ProductService.
         //
@@ -73,6 +96,6 @@ public class IndexModel : PageModel
         // "Laptop ASUS"
         //
         // Kemudian hasilnya disimpan ke ProductName.
-        ProductName = _productService.GetProductName();
+        // ProductName = _productService.GetProductName();
     }
 }
