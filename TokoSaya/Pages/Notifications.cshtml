@@ -1,0 +1,22 @@
+@page
+@model TokoSaya.Pages.NotificationsModel
+
+<h1>Notification Service + DI</h1>
+
+<p>Pilih channel notifikasi:</p>
+
+<p>
+    <a asp-page="/Notifications" asp-route-channel="Email">
+        Gunakan Email
+    </a>
+    |
+    <a asp-page="/Notifications" asp-route-channel="Sms">
+        Gunakan SMS
+    </a>
+</p>
+
+<p>Channel aktif: <strong>@Model.SelectedChannel</strong></p>
+
+<p>Hasil simulasi notifikasi:</p>
+
+<h3>@Model.Result</h3>

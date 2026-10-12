@@ -1,5 +1,5 @@
-using TokoSaya.Services;
 using TokoSaya.Interfaces;
+using TokoSaya.Services;
 
 // ============================================================
 // CREATE BUILDER
@@ -20,16 +20,36 @@ var builder = WebApplication.CreateBuilder(args); // var builder adalah default 
 // "ASP.NET Core, ProductService adalah service yang dapat
 // digunakan oleh aplikasi."
 //
-// AddScoped akan kita pelajari secara khusus nanti.
-// Untuk sekarang cukup pahami bahwa ProductService
-// sedang DIDAFTARKAN ke DI Container.
-// ============================================================
-builder.Services.AddScoped<IProductService, ProductService>();  // registrasi ProductService melalui Interface
+// ===== Depedency Injection (DI) Container =====
+// berfungsi untuk Registration / Mendaftarkan Interface / Service dan jika di minta, DI akan memberikan Object nya
+// Registration untuk Interface & Service Product
+builder.Services.AddScoped<IProductService, ProductService>(); // Artinya Kalau ada yang meminta IProductService → berikan ProductService
+
+// builder.Services.AddScoped<IProductService, FakeProductService>();  // Artinya Kalau ada yang meminta IProductService → berikan FakeProductService
+
+// Registration Interface & Service Notification
+/*
+    Bacanya: Ketika ada bagian aplikasi meminta INotificationService, DI Container menyediakan EmailNotificationService.
+    Sedangkan AddScoped menentukan lifetime service: satu instance untuk setiap scope, yang pada request HTTP ASP.NET Core biasanya berarti satu instance per request.
+*/
+// Registration pertama: Email
+builder.Services.AddScoped<INotificationService, EmailNotificationService>();
+
+// Registration kedua: SMS
+builder.Services.AddScoped<INotificationService, SmsNotificationService>();
+
+// Registrasi factory yang memilih implementation.
+builder.Services.AddScoped<NotificationServiceFactory>();
+
+// Registration untuk Service Product
+// builder.Services.AddScoped<ProductService>();
 // builder.Services.AddTransient<ProductService>();
 // builder.Services.AddSingleton<ProductService>();
 
+// Registration untuk ProductCheckerService
 builder.Services.AddScoped<ProductCheckerService>();
 
+// builder.Services.AddScoped<IProductService, MockProductService>();
 // ============================================================
 // RAZOR PAGES REGISTRATION
 // ============================================================

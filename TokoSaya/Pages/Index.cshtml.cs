@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TokoSaya.Services; // agar C# tau kita ingin menggunakan ProductService
 using TokoSaya.Interfaces;
+using TokoSaya.Services; // agar C# tau kita ingin menggunakan ProductService
 
 namespace TokoSaya.Pages;
 
@@ -80,6 +80,7 @@ public class IndexModel : PageModel
     // ========================================================
     public string ProductId { get; private set; } = "";
     public string ProductCheckerId { get; private set; } = "";
+    public string ProductName { get; private set; } = "";
 
     public void OnGet()
     {
@@ -88,6 +89,8 @@ public class IndexModel : PageModel
 
         // Mengambil ID ProductService melalui ProductCheckerService
         ProductCheckerId = _productCheckerService.GetProductServiceId().ToString();
+
+        ProductName = _productService.GetProductName();
 
         // Memanggil method GetProductName()
         // dari ProductService.
