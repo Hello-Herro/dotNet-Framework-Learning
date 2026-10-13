@@ -22,3 +22,4 @@ public interface INotificationService
         Berbeda dengan IProductService, kali ini contract-nya berkaitan dengan pengiriman notifikasi.
     */
 }
+    

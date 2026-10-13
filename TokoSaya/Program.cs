@@ -38,8 +38,11 @@ builder.Services.AddScoped<INotificationService, EmailNotificationService>();
 // Registration kedua: SMS
 builder.Services.AddScoped<INotificationService, SmsNotificationService>();
 
+// Registration ketiga: Push
+builder.Services.AddScoped<INotificationService, PushNotificationService>();
+
 // Registrasi factory yang memilih implementation.
-builder.Services.AddScoped<NotificationServiceFactory>();
+builder.Services.AddScoped<INotificationServiceFactory, NotificationServiceFactory>();
 
 // Registration untuk Service Product
 // builder.Services.AddScoped<ProductService>();

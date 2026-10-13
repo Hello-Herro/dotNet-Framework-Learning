@@ -1,7 +1,8 @@
 using System;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TokoSaya.Models;
+using TokoSaya.Interfaces;
 using TokoSaya.Services;
+using TokoSaya.Models;
 
 namespace TokoSaya.Pages;
 
@@ -14,16 +15,18 @@ public class NotificationsModel : PageModel
 {
     // FIELD / DEPENDENCY
     // Menyimpan factory yang diterima melalui constructor injection.
-    private readonly NotificationServiceFactory _notificationServiceFactory;
+    private readonly INotificationServiceFactory _notificationServiceFactory;
 
+    // PROPERTY
     // Menyimpan kumpulan implementation dari INotificationService.
     // private readonly IEnumerable<INotificationService> _notificationServices;
 
-    // PROPERTY: hasil simulasi yang akan ditampilkan di halaman.
+    // PROPERTY 
+    // Menyimpan hasil simulasi notifikasi yang akan ditampilkan di halaman.
     public string Result { get; private set; } = string.Empty;
 
     // PROPERTY
-    // Menyimpan channel yang sedang digunakan.
+    // Menampilkan channel yang sedang di pilih
     public string SelectedChannel { get; private set; } = "Email";
 
     // Menyimpan seluruh hasil simulasi notifikasi.
@@ -55,7 +58,7 @@ public class NotificationsModel : PageModel
     // CONSTRUCTOR INJECTION
     // ASP.NET Core DI Container menyediakan factory ini.
     // ========================================================
-    public NotificationsModel(NotificationServiceFactory notificationServiceFactory)
+    public NotificationsModel(INotificationServiceFactory notificationServiceFactory)
     {
         _notificationServiceFactory = notificationServiceFactory;
     }
@@ -88,7 +91,7 @@ public class NotificationsModel : PageModel
     // ========================================================
     public void OnGet(string? channel)
     {
-        // Menggunakan Email jika channel tidak diberikan.
+        // Gunakan Email sebagai pilihan Default.
         if (string.IsNullOrWhiteSpace(channel))
         {
             channel = nameof(NotificationChannel.Email);
