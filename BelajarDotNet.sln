@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BelajarService", "BelajarService\BelajarService.csproj", "{E96229A2-28E8-E9FD-F271-D17FDA5456B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokoSaya", "TokoSaya\TokoSaya.csproj", "{EB06A598-9F45-B0D7-DA85-1DC9DE7005C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E96229A2-28E8-E9FD-F271-D17FDA5456B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96229A2-28E8-E9FD-F271-D17FDA5456B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96229A2-28E8-E9FD-F271-D17FDA5456B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96229A2-28E8-E9FD-F271-D17FDA5456B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB06A598-9F45-B0D7-DA85-1DC9DE7005C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB06A598-9F45-B0D7-DA85-1DC9DE7005C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB06A598-9F45-B0D7-DA85-1DC9DE7005C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB06A598-9F45-B0D7-DA85-1DC9DE7005C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66EC0C53-E40A-49E7-923D-69A7DBBDC27B}
+	EndGlobalSection
+EndGlobal

@@ -52,6 +52,13 @@ builder.Services.AddScoped<INotificationServiceFactory, NotificationServiceFacto
 // Registration untuk ProductCheckerService
 builder.Services.AddScoped<ProductCheckerService>();
 
+// Registration untuk MessageService
+builder.Services.AddScoped<MessageService>();
+/*
+    Artinya: Ketika ada bagian aplikasi yang meminta MessageService, DI Container akan menyediakan object MessageService.
+    Lifetime service ditentukan oleh AddScoped: satu instance untuk setiap scope, yang pada request HTTP ASP.NET Core biasanya berarti satu instance per request.
+*/
+
 // builder.Services.AddScoped<IProductService, MockProductService>();
 // ============================================================
 // RAZOR PAGES REGISTRATION

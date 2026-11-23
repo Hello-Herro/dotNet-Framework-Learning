@@ -1,0 +1,23 @@
+@page "{id:int}"
+@model TokoSaya.Pages.Products.DetailsModel
+
+<h1>Product Details</h1>
+
+<p>Product ID:</p>
+<h2>@Model.ProductId</h2>
+
+<p>Product Name:</p>
+<h2>@Model.ProductName</h2>
+
+@* 
+@page "{id:int}"
+Apa artinya?
+
+Kita mendefinisikan route template yang memiliki parameter bernama id dan harus bertipe integer.
+
+Mari kita pecah:
+|Sintaks|	                |Arti|
+@page	    =>      Menjadikan file sebagai Razor Page.
+{id}	    =>      Membuat route parameter bernama id.
+:int	    =>      Memberikan constraint bahwa nilai parameter harus berupa integer. 
+*@

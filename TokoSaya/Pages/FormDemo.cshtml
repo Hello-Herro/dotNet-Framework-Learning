@@ -1,0 +1,74 @@
+@page
+@model TokoSaya.Pages.FormDemoModel
+
+<h1>HTTP GET &amp; POST Practice</h1>
+
+<p>HTTP Method: <strong>@Model.RequestMethod</strong></p>
+
+<hr />
+
+<h2>Form Pengiriman Pesan</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label asp-for="Input.Name" class="form-label"></label>
+
+        <input asp-for="Input.Name" class="form-control" placeholder="Masukkan nama" />
+
+        <span asp-validation-for="Input.Name" class="text-danger"></span>
+    </div>
+
+    @*
+        <input asp-for="Name" /> 
+    Tag Helper ini menghubungkan input HTML ke property Name pada PageModel.
+    Dengan begitu, kita tidak perlu menuliskan name="Name" dan id="Name" secara manual. 
+    *@
+    @*  
+        <span asp-validation-for="Input.Name"></span>
+    Menampilkan pesan validasi yang berkaitan dengan property Name.
+    *@
+    @*
+        <label asp-for="Input.Name"></label>
+    Menghubungkan label HTML dengan property Name.
+    Ketiga Tag Helper tersebut membantu mengurangi penulisan HTML secara manual.
+    *@
+
+    <div class="mb-3">
+        <label asp-for="Input.Message" class="form-label"></label>
+
+        <textarea asp-for="Input.Message" class="form-control" placeholder="Masukkan pesan"></textarea>
+
+        <span asp-validation-for="Input.Message" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Kirim Pesan
+    </button>
+
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.Result))
+{
+    <hr />
+
+    <h2>Hasil Pemrosesan</h2>
+
+    <p>@Model.Result</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@*  
+    Apa arti kode ini?
+    A. @section Scripts
+    Mendefinisikan bagian script khusus untuk halaman Razor Page ini.
+
+    B. <partial>
+    Memanggil partial view yang sudah dibuat, yaitu _ValidationScriptsPartial.
+
+    C. _ValidationScriptsPartial
+    Memuat script yang dibutuhkan untuk menjalankan client-side validation.
+*@

@@ -1,0 +1,44 @@
+@page
+@model TokoSaya.Pages.RequestDemoModel
+
+@* 
+    @page membuat file tersebut menjadi Razor Page yang dapat diakses melalui URL berdasarkan lokasinya.
+    @model menghubungkan tampilan dengan class RequestDemoModel, 
+    sehingga nilai dari property seperti RequestMethod dapat ditampilkan menggunakan @Model.RequestMethod. 
+*@
+
+<h1>HTTP Request &amp; Response</h1>
+
+<h2>Request Information</h2>
+
+<table class="table">
+    <tr>
+        <th>HTTP Method</th>
+        <td>@Model.RequestMethod</td>
+    </tr>
+    <tr>
+        <th>Request Path</th>
+        <td>@Model.RequestPath</td>
+    </tr>
+    <tr>
+        <th>Query String</th>
+        <td>@Model.RequestQueryString</td>
+    </tr>
+    <tr>
+        <th>Name Parameter</th>
+        <td>@Model.NameParameter</td>
+    </tr>
+    <tr>
+        <th>Channel Parameter</th>
+        <td>@Model.ChannelParameter</td>
+    </tr>
+</table>
+
+<h2>Response Information</h2>
+
+<p>
+    Status Code:
+    <strong>@Model.ResponseStatusCode</strong>
+</p>
+
+<p>Halaman ini adalah body HTML yang dikirim sebagai HTTP Response.</p>
